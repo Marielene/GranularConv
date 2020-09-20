@@ -1,4 +1,3 @@
-# GranularConv
 <h1>Granular convolution with MATLAB</H1>
 <h3>Overview of design and implementation</h3>
 My overall idea for both the implementation and design is to provide a clear distinction between functions and keep things as simple as possible. To achieve that I try to keep the functions within the GUI program and I use simplistic design with serif script.
