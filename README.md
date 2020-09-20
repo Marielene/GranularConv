@@ -5,20 +5,21 @@ My overall idea for both the implementation and design is to provide a clear dis
 <h3>Design</h3>
 My GUI design is simplistic, yet intuitive. It uses multiple tabs to clearly distinct the settings used for each of the functions of the program. For clearer separation I use button groups on the playback buttons, file commands and required by the coursework core functionality, to easily distinguish and locate each of the buttons when using the program
 An axis is placed above the buttons and tabs to display the spectrogram of the sound that’s currently loaded/convoluted/edited. I’ve added different spectrogram colours that offer different visuals, that often make it easier to distinguish noise/hums.
-The settings tabs include:
-• Enveloping – a toggle button to turn on enveloping, as well as all of the settings for it with their respective meters from 0 to 100 (attack, sustain, delay, release).
-• Granular convolution – giving choice between standard and fast Fourier transform, depending on the kind of sound one’s looking for. Noise reduction and choosing the state of the initial load file that would be convoluted as original or modified.
-• Pitch and speed – providing knobs to turn the speed and pitch up or down, depending on preference with buttons that toggle the transformations. As well as a flip button that can play the track backwards.
+<ul>The settings tabs include:
+<li>Enveloping – a toggle button to turn on enveloping, as well as all of the settings for it with their respective meters from 0 to 100 (attack, sustain, delay, release).</li>
+<li>Granular convolution – giving choice between standard and fast Fourier transform, depending on the kind of sound one’s looking for. Noise reduction and choosing the state of the initial load file that would be convoluted as original or modified.</li>
+<li>Pitch and speed – providing knobs to turn the speed and pitch up or down, depending on preference with buttons that toggle the transformations. As well as a flip button that can play the track backwards. </li>
+  </ul>
 The “Load Audio”, “Save Audio” and “Granular Conv” buttons open popups that present the file explorer, allowing the user to choose a file to load or save. Another pop-up is prompted by the “Draw” function that enables the drawing on the spectrogram. The reason for this is that unfortunately, the MAC labs only provided us with the 2018a version of MATLAB, so there was apparently no way to incorporate the drawing in the GUI at least to my knowledge.
-Implementation
+<h2>Implementation </h2>
 A lot of the implementation regarding the simpler functions has been previously done in the lab sessions with Dr Marshall, so a sizeable chunk of the code regarding them is used for the code in my coursework. Essentially, the Fourier transforms for spectrograms and convolution are code that was originally presented in labs, that has been altered to fit the coursework specifications.
 I use separate functions to accomplish most of the tasks, as I was trying not to clutter the buttons with too much redundant code, that would make them difficult to navigate and read. I’ve only left the buttons to perform the conditional operations and alter the parameters passed to each of the other functions, in order to minimize code repetition.
 The conditional operations mainly revolve around altering, enabling and disabling different functionality provided in the settings tabs such as choosing between convoluting the original file or the modified one, altering the speed, etc. That allows for a better overview of how the GUI itself works, by just looking at the buttons and how they interact with the settings and checkboxes.
 The separation also allows for easier overview of the functionality that’s at the top in the methods section, clearly outlining the different methods and their place in the code with conditional statements. For instance: each button has an enveloping if statement that calls the enveloping function if enveloping is selected as toggled on the settings bar.
 Apart from clearer reading of the code, separating the functions away from my conditional statements enabled for easier debugging and better control over the tasks that each function performed. It helped me better understand the code, as well as break it down to smaller chunks, giving more encapsulation and as stated above, providing more control over the individual processes associated with accomplishing a task.
-Algorithms and main requirements
+<h3>Algorithms and main requirements</h3>
 To accomplish the requirements listed in the coursework brief, I utilize a lot of the lab code as mentioned in the implementation section. Here I’ll go in further detail about the algorithms used and how/if they were altered.
-Pitch and speed
+<h3>Pitch and speed</h3>
 To perform the actual change of the signal, I used the code provided in week 2, that enabled speed/pitch manipulation. The pitch and speed were originally a scrollable button, until I improved the lab code’s interaction with the GUI through using the following line:
 [num, den] = rat(app.PitchKnob.Value);
 It allowed me to separate the numerator and denominator of the number that I used in the knob for pitch.
